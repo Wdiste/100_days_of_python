@@ -20,8 +20,10 @@ def auction(more_bids):
         
         if input("Would you like to make another bid? (Y/N)  ").lower() == "n":
             more_bids = False
+        else:
+            print("\n" * 100)
 
-    print(f"Congratulations {bidders['highest_bid'][0]}, you are the winner!")
+    print("\n" * 30 + f"Congratulations {bidders['highest_bid'][0]}, you are the winner!")
     print(f"{bidders['highest_bid'][0]}, please pay your bill of ${bidders['highest_bid'][1]} at our kiosk.")
 
 
@@ -38,7 +40,7 @@ print("""                         ___________
                        .-------------.
                    jgs/_______________\\""")
 if input("Ready to start? (Y/N)  ").lower() == "y":
-    print("Lets meet our first bidder!")
+    print("\n" * 100)
     auction(more_bids = True)
 else:
     print("Goodbye")
