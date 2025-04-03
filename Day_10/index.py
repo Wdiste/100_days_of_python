@@ -42,18 +42,10 @@ def calculator():
         operation = input("Operation? + - * /  ")
         n2 = float(input("What is the second number? "))
 
-        if operation == "+":
-            answer = operators["+"](n1, n2)
-            print(answer)
-        elif operation == "-":
-            answer = operators["-"](n1, n2)
-            print(answer)
-        elif operation == "*":
-            answer = operators["*"](n1, n2)
-            print(answer)
-        elif operation == "/":
-            answer = operators["/"](n1, n2)
-            print(answer)
+        # using the dictionary prevents us from having to write nested for loops
+        answer = operators[operation](n1, n2)
+        print(answer)
+        
 
         if input("Would you like to continue? Y/N: ").lower() == "n":
             print("\n\nGoodbye")
