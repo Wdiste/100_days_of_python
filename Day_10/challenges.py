@@ -38,6 +38,9 @@
 # - unless the year is also divisible by 400 with no remainder   
 
 def is_leap_year(year):
+    """ This is a 'DOCSTRING'. These are often added to explain how a function operates.
+        Mouse over the function name to see the tooltip.
+        This function takes a year and returns True if it is a LEAP YEAR, False otherwise."""
     if year % 4 == 0:
         if year % 100 == 0:
             if year % 400 == 0:
