@@ -34,13 +34,13 @@ def calculator():
     answer = "none"
     while done == False:
         if answer == "none":
-            n1 = int(input("What is the first number?  "))
+            n1 = float(input("What is the first number?  "))
         else:
             n1 = answer
             print(f"\n\nAnswer: {n1} ")
 
         operation = input("Operation? + - * /  ")
-        n2 = int(input("What is the second number? "))
+        n2 = float(input("What is the second number? "))
 
         if operation == "+":
             answer = operators["+"](n1, n2)
