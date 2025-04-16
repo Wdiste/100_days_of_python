@@ -25,6 +25,7 @@ def blackjack():
         }
     player_hand = [0]
     dealer_hand = [0]
+    stand = False
     
     #############################################################################
     def hand_value(hand, deck):
@@ -46,20 +47,34 @@ def blackjack():
         else:
             return value
     #############################################################################
-    
+
     if input("Would you like to play blackjack? (Y/N) 🂡 🂮 ").lower() == "y":
-        print("Let's Play!\n\n")  
+        print("Let's Play!\n\n")
+        for i in range(2):
+            player_hand.append(random.choice(list(deck)))
+            dealer_hand.append(random.choice(list(deck)))
+            player_hand[0] = hand_value(player_hand, deck)
+            dealer_hand[0] = hand_value(dealer_hand, deck)  
     else:
+        player_hand[0] = "Goodbye"
         print("Goodbye")
         return
-    
-    for i in range(2):
-        player_hand.append(random.choice(list(deck)))
-        dealer_hand.append(random.choice(list(deck)))
-        player_hand[0] = hand_value(player_hand, deck)
-        dealer_hand[0] = hand_value(dealer_hand, deck)
-    
-    print(f"Dealer: {dealer_hand[1], "🂠"}\nPlayer: {player_hand[1], player_hand[2]} Total: {player_hand[0]}")
+       
+    while stand == False and type(player_hand[0]) == int:
+        print(f"Dealer: {dealer_hand[1]}, 🂠\nPlayer: {player_hand[1:]} Total: {player_hand[0]}")
+        hit_or_stand = input("Would you like another card?").lower()
+        if hit_or_stand == "n":
+            stand = True
+        elif hit_or_stand == "y":
+            player_hand.append(random.choice(list(deck)))
+            player_hand[0] = hand_value(player_hand, deck)
 
+    print(f"Dealer: {dealer_hand[1:]}\nPlayer: {player_hand[1:]} Total: {player_hand[0]}")
+
+    if player_hand[0] == "Blackjack!":
+        print("\n\nCongrats! Player wins!")
+    elif player_hand[0] == "Bust":
+        print("\n\nDealer wins! Better luck next time!")
+    return 0
 
 blackjack()
