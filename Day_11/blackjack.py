@@ -24,22 +24,12 @@ def blackjack():
         "K" : 10
         }
     player_hand = [0]
-    dealer_hand = []
-
-    print(f"""
-        Primary draw:
-        Player: {player_hand}
-        Dealer: {dealer_hand} """)
+    dealer_hand = [0]
     
     #############################################################################
     def hand_value(hand, deck):
         value = 0
         aces = 0
-
-        print(f"""
-        initial value round:
-        Player: {player_hand}
-        Dealer: {dealer_hand} """)
 
         for card in hand[1:]: ### seen here is an example of LIST SLICING.  1 -> start index
             if card == "A":   #                                             : -> until end with no number(used like range)
@@ -49,7 +39,6 @@ def blackjack():
             while value > 21 and aces:
                 value -= 10  # Count one Ace as 1 instead of 11
                 aces -= 1
-        print(f"""Inside value func 52:  hand is: {hand}""")
         if value > 21:
             return "Bust"
         elif value == 21:
@@ -66,9 +55,11 @@ def blackjack():
     
     for i in range(2):
         player_hand.append(random.choice(list(deck)))
+        dealer_hand.append(random.choice(list(deck)))
         player_hand[0] = hand_value(player_hand, deck)
+        dealer_hand[0] = hand_value(dealer_hand, deck)
     
-    print(player_hand)
+    print(f"Dealer: {dealer_hand[1], "🂠"}\nPlayer: {player_hand[1], player_hand[2]} Total: {player_hand[0]}")
 
 
 blackjack()
