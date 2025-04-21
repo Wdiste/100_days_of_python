@@ -19,18 +19,22 @@ import random
     # player chooses which has higher
     # either score and conitnue or fail and lose
 ###
+def display(choice_1, choice_2, total_correct):
+    print(f"""  {logo}
+                Level {total_correct + 1}
+                \nOption 1: {choice_1["name"]} of {choice_1["country"]}
+                {vs}
+                \nOption 2: {choice_2["name"]} of {choice_2["country"]}
+           """)
+    return total_correct
+    
 def start_game():
     total_correct = 0
 
-    ### Access these data with choice_x("name") => or variants: "follower_count" "description" "country"
+    ### Access these data with choice_x["name"] => or variants: "follower_count" "description" "country"
     choice_1 = random.choice(game_data_dict)
     choice_2 = random.choice(game_data_dict)
 
-    print(f"choice 1: {choice_1}\nChoice 2: {choice_2}")
-
-    print(f"""  {logo}
-                \nLevel {total_correct + 1}
-
-""")
+    display(choice_1, choice_2, total_correct)
 
 start_game()
